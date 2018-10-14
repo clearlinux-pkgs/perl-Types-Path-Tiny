@@ -1,0 +1,8 @@
+0.006
+perl(Exporter::Tiny)
+perl(File::pushd)
+perl(Path::Tiny)
+perl(Type::Library)
+perl(Type::Utils)
+perl(Types::Standard)
+perl(Types::TypeTiny)
