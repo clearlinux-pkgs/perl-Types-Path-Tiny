@@ -4,7 +4,7 @@
 #
 Name     : perl-Types-Path-Tiny
 Version  : 0.006
-Release  : 3
+Release  : 4
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz
 Summary  : 'Path::Tiny types and coercions for Moose and Moo'
