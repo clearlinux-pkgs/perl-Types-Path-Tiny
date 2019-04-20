@@ -4,10 +4,10 @@
 #
 Name     : perl-Types-Path-Tiny
 Version  : 0.006
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz
-Summary  : 'Path::Tiny types and coercions for Moose and Moo'
+Summary  : Path::Tiny types and coercions for Moose and Moo
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: perl-Types-Path-Tiny-license = %{version}-%{release}
@@ -30,6 +30,7 @@ version 0.006
 Summary: dev components for the perl-Types-Path-Tiny package.
 Group: Development
 Provides: perl-Types-Path-Tiny-devel = %{version}-%{release}
+Requires: perl-Types-Path-Tiny = %{version}-%{release}
 
 %description dev
 dev components for the perl-Types-Path-Tiny package.
