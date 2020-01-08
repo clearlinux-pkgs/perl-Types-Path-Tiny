@@ -4,13 +4,14 @@
 #
 Name     : perl-Types-Path-Tiny
 Version  : 0.006
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/Types-Path-Tiny-0.006.tar.gz
-Summary  : Path::Tiny types and coercions for Moose and Moo
+Summary  : 'Path::Tiny types and coercions for Moose and Moo'
 Group    : Development/Tools
 License  : Apache-2.0
 Requires: perl-Types-Path-Tiny-license = %{version}-%{release}
+Requires: perl-Types-Path-Tiny-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(Exporter::Tiny)
 BuildRequires : perl(File::pushd)
@@ -44,14 +45,24 @@ Group: Default
 license components for the perl-Types-Path-Tiny package.
 
 
+%package perl
+Summary: perl components for the perl-Types-Path-Tiny package.
+Group: Default
+Requires: perl-Types-Path-Tiny = %{version}-%{release}
+
+%description perl
+perl components for the perl-Types-Path-Tiny package.
+
+
 %prep
 %setup -q -n Types-Path-Tiny-0.006
+cd %{_builddir}/Types-Path-Tiny-0.006
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -61,7 +72,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -70,7 +81,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Types-Path-Tiny
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Types-Path-Tiny/LICENSE
+cp %{_builddir}/Types-Path-Tiny-0.006/LICENSE %{buildroot}/usr/share/package-licenses/perl-Types-Path-Tiny/e188c4892bc1fbfced62c2299a2a24fd21098d81
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -83,7 +94,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Types/Path/Tiny.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -91,4 +101,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Types-Path-Tiny/LICENSE
+/usr/share/package-licenses/perl-Types-Path-Tiny/e188c4892bc1fbfced62c2299a2a24fd21098d81
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Types/Path/Tiny.pm
